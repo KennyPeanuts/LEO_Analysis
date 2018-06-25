@@ -31,209 +31,263 @@ time_point <- 1:length(YSI$Date) # Date used but any variable will work
 #--------> Plots of depth and sensor by season
 
 #### Plot of Oxygen and depth spring
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(ODO ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Dissolved Oxygen (mg/L)", main = "Spring" , col= "blue", pch = 1, axes = F, ylim = c(5, 15))
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(ODO ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Dissolved Oxygen (mg/L)", xlab = "" , col= "blue", pch = 1, axes = F, ylim = c(2, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
 
+##### Plot of Depth
+par(mar = c(3, 5, 0, 5))
+plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)", ylim = c(0, 150))
+
+#### Plot of Oxygen Saturation and depth spring
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(ODOSAT ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Percent Oxygen Saturation", xlab = "" , col= "red", pch = 1, axes = F, ylim = c(25, 175))
+axis(2)
+box()
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)", ylim = c(0, 150))
 
 #### plot of turb and depth spring
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(TURB ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "TURBIDITY", main = "Spring" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(TURB ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Turbidity (FNU)", xlab = "" , col= "brown4", pch = 1, axes = F, ylim = c(0, 50))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)", ylim = c(0, 150))
 
 
 ####plot of temp and depth spring
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(TEMP ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Temperature", main = "Spring" , col= "blue", pch = 1, axes = F, ylim = c(5, 15))
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(TEMP ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Temperature (dC)", xlab = "" , col= "black", pch = 1, axes = F, ylim = c(-5, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)", ylim = c(0, 150))
 
 
 ####plot of cond and depth spring
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(ODO ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Conductivity", main = "Spring" , col= "blue", pch = 1, axes = F, ylim = c(5, 15))
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(COND/1000 ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Conductivity (mS/cm)", xlab = "" , col= "darkviolet", pch = 1, axes = F, ylim = c(0, 25))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 #### plot of salinity and depth spring
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(SAL ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Salinity", main = "Spring" , col= "blue", pch = 1, axes = F, ylim = c(5, 15))
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(SAL ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Salinity ", xlab = "" , col= "deeppink3", pch = 1, axes = F, ylim = c(0, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
 
 ####plot of FDOM and depth spring
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(FDOM ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "Flourescent Dissolved Organic Matter", main = "Spring" , col= "blue", pch = 1, axes = F, ylim = c(5, 15))
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(FDOM ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "fDOM (QSU)", xlab = "" , col= "darkorange3", pch = 1, axes = F, ylim = c(0, 15))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
-#### plot of ph and depth
+#### plot of ph and depth in Spring
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(PH ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "pH", main = "Spring" , col= "blue", pch = 1, axes = F, ylim = c(5, 15))
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(PH ~ time_point, data = YSI, subset = Date < "2018-04-09" & Date > "2018-03-15" , type= "l", ylab = "pH", xlab = "" , col= "green3", pch = 1, axes = F, ylim = c(7, 9))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-04-08 24:59:59" & Date.Time > "2018-03-15 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 #### plot of ODO and depth winter
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(ODO ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Dissolved Oxygen (mg/L)", main = "Winter" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(ODO ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Dissolved Oxygen (mg/L)", xlab = "" , col= "blue", pch = 1, axes = F, ylim = c(2, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
 
+#### Plot of Depth in Winter
+#par(mar = c(2, 5, 0, 5))
+par(mar = c(3, 5, 0, 5))
+plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)", ylim = c(0, 150))
+
+#### plot of DO Saturation and depth in Winter
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(ODOSAT ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Precent Oxygen Saturation", xlab = "" , col= "red", pch = 1, axes = F, ylim = c(25, 175))
+axis(2)
+box()
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
 
 #### plot of turb and depth winter
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(TURB ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Turbidity", main = "Winter" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(TURB ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Turbidity (FNU)", xlab = "" , col= "brown4", pch = 1, axes = F, ylim = c(0, 50))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 #### plot of temp and depth winter
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(TEMP ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Temperature", main = "Winter" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(TEMP ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Temperature (dC)", xlab = "" , col= "black", pch = 1, axes = F, ylim = c(-5, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 #### plot of cond and depth winter
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(COND ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Conductivity", main = "Winter" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(COND/1000 ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Conductivity (mS/cm)", xlab = "" , col= "darkviolet", pch = 1, axes = F, ylim = c(0, 25))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 ####plot of sal and depth winter
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(SAL ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Salinity", main = "Winter" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(SAL ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Salinity", xlab = "" , col= "deeppink3", pch = 1, axes = F, ylim = c(0, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 #### plot of FDOM
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(FDOM ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "Flourescent Dissolved Organic Matter", main = "Winter" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(FDOM ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "fDOM (QSU)", xlab = "" , col= "darkorange3", pch = 1, axes = F, ylim = c(0, 15))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
-#### plot of pH
+#### plot of pH in Winter
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(PH ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "pH", main = "Winter" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(PH ~ time_point, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-16" , type= "l", ylab = "pH", xlab = "" , col= "green3", pch = 1, axes = F, ylim = c(7, 9))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2018-03-15 24:59:59" & Date.Time > "2017-12-16 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 #### plot of ODO and depth fall
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(ODO ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Dissolved Oxygen (mg/L)", main = "Fall" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(ODO ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Dissolved Oxygen (mg/L)", xlab = "" , col= "blue", pch = 1, axes = F, ylim = c(2, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
 
+#### Plot of Depth in Fall
+#par(mar = c(2, 5, 0, 5))
+par(mar = c(3, 5, 0, 5))
+plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)", ylim = c(0, 150))
+
+#### plot of DO Saturation and  depth fall
+
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(ODOSAT ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Percent Oxygen Saturation", xlab = "" , col= "red", pch = 1, axes = F, ylim = c(25, 175))
+axis(2)
+box()
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
 
 ####plot of turb and depth fall
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(TURB ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Turbidity", main = "Fall" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(TURB ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Turbidity (FNU)", xlab = "" , col= "brown4", pch = 1, axes = F, ylim = c(0, 50))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 #### plot of temp and depeth fall
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(TEMP ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Temperature", main = "Fall" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(TEMP ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Temperature (dC)", xlab = "" , col= "black", pch = 1, axes = F, ylim = c(-5, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 ####plot of cond and depth fall
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(COND ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Conductivity", main = "Fall" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(COND/1000 ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Conductivity (mS/cm)", xlab = "" , col= "darkviolet", pch = 1, axes = F, ylim = c(0, 25))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 #### plot of salinity and depth fall
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(SAL ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Salinity", main = "Fall" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(SAL ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Salinity", xlab = "" , col= "deeppink3", pch = 1, axes = F, ylim = c(0, 20))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
 
 #### plot of FDOM and depth fall
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(FDOM ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "Flourescent Dissolved Organic Matter", main = "Fall" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(FDOM ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "fDOM (QSU)", xlab = "" , col= "darkorange2", pch = 1, axes = F, ylim = c(0, 15))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
 
 #### plot of pH and depth fall
 
-par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
-plot(PH ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "pH", main = "Fall" , col= "blue", pch = 1, axes = F)
+#par(mfcol = c(2, 1),  mar = c(0, 5, 2, 5))
+par(mar = c(0, 5, 0, 5))
+plot(PH ~ time_point, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-10" , type= "l", ylab = "pH", xlab = "" , col= "green3", pch = 1, axes = F, ylim = c(7, 9))
 axis(2)
 box()
-par(mar = c(2, 5, 0, 5))
-plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
+#par(mar = c(2, 5, 0, 5))
+#plot(Depth_to_Bottom ~ Date.Time, data = pres_wo_high_value, subset = Date.Time < "2017-12-15 24:59:59" & Date.Time > "2017-11-10 24:59:59", type = "l", ylab = "Depth (cm)")
 
 
 ########Total and day mean boxplot by season plots######
@@ -243,7 +297,7 @@ winter_ODO_day_mean <- as.numeric(tapply(YSI$ODO[YSI$Date < "2018-03-15" & YSI$D
 fall_ODO_day_mean <- as.numeric(tapply(YSI$ODO[YSI$Date < "2017-12-15" & YSI$Date > "2017-11-11"], YSI$Date[YSI$Date < "2017-12-15" & YSI$Date > "2017-11-11"], mean))
 
 ##### ------------->Combined Plot of ODO
-par(las = 1, mfcol = c(2, 1), mar = c(0, 5, 3, 5)) 
+#par(las = 1, mfcol = c(2, 1), mar = c(0, 5, 3, 5)) 
 boxplot(YSI$ODO[YSI$Date < "2018-04-14" & YSI$Date > "2018-03-15"], YSI$ODO[YSI$Date < "2018-03-15" & YSI$Date > "2017-12-15"], YSI$ODO[YSI$Date < "2017-12-15" & YSI$Date > "2017-11-11"], axes = F, ylim = c(3, 20), ylab = "Dissolved Oxygen")
 axis(2)
 box()
@@ -270,7 +324,7 @@ axis(1, c("Spring", "Winter", "Fall"), at = c(1, 2, 3))
 box()
 
 #### plot of temp
-
+##### Calculate Means
 sp_TEMP_day_mean <- as.numeric(tapply(YSI$TEMP[YSI$Date < "2018-04-14" & YSI$Date > "2018-03-15"], YSI$Date[YSI$Date < "2018-04-14" & YSI$Date > "2018-03-15"], mean))
 winter_TEMP_day_mean <- as.numeric(tapply(YSI$TEMP[YSI$Date < "2018-03-15" & YSI$Date > "2017-12-15"], YSI$Date[YSI$Date < "2018-03-15" & YSI$Date > "2017-12-15"], mean))
 fall_TEMP_day_mean <- as.numeric(tapply(YSI$TEMP[YSI$Date < "2017-12-15" & YSI$Date > "2017-11-11"], YSI$Date[YSI$Date < "2017-12-15" & YSI$Date > "2017-11-11"], mean))
@@ -285,7 +339,6 @@ axis(2)
 axis(1, c("Spring", "Winter", "Fall"), at = c(1, 2, 3))
 box()
 
-#### plot of cond -> not sure about difference in x-axis*
 
 sp_COND_day_mean <- as.numeric(tapply(YSI$COND[YSI$Date < "2018-04-14" & YSI$Date > "2018-03-15"], YSI$Date[YSI$Date < "2018-04-14" & YSI$Date > "2018-03-15"], mean))
 winter_COND_day_mean <- as.numeric(tapply(YSI$COND[YSI$Date < "2018-03-15" & YSI$Date > "2017-12-15"], YSI$Date[YSI$Date < "2018-03-15" & YSI$Date > "2017-12-15"], mean))
@@ -371,4 +424,5 @@ box()
     points(TURB ~ SAL, data = YSI, subset = Date < "2018-03-15" & Date > "2017-12-15", col = 2, pch = ".")
     points(TURB ~ SAL, data = YSI, subset = Date < "2017-12-15" & Date > "2017-11-11", col = 3, pch = ".")
     
+
     
