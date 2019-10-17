@@ -3,16 +3,16 @@
 ## Enter User Data
 ### Input filenames
 
-   input.T1.raw.file <- "./data/CR200Series_HSF_Weather_Table1.dat"
-   input.T2.raw.file <- "./data/CR200Series_HSF_Weather_Table2.dat"
+   input.T1.raw.file <- "./data/HSF_Weather_2019-10-15_T1.dat"
+   input.T2.raw.file <- "./data/HSF_Weather_2019-10-15_T2.dat"
    
-   output.T1.data.file <- "./data/HSF_weather_2019-09-29_T1_data.csv" 
-   output.T2.data.file <- "./data/HSF_weather_2019-09-29_T2_data.csv" 
+   output.T1.data.file <- "./data/HSF_weather_2019-10-15_T1_data.csv" 
+   output.T2.data.file <- "./data/HSF_weather_2019-10-15_T2_data.csv" 
    
-   output.clean.file <- "./data/HSF_weather_2019-09-28.csv" 
+   output.clean.file <- "./data/HSF_weather_2019-10-15.csv" 
     # file name format = ./data/site_date.csv
 
-   metadata.file <- "./data/metadata/HSF_weather_2019-09-29_metadata.txt" 
+   metadata.file <- "./data/metadata/HSF_weather_2019-10-15_metadata.txt" 
     # file name format = ./data/site_date.csv
 
 
@@ -72,6 +72,13 @@ At this point the data file contains 5 lines of metadata before the data begin a
 ### Add DATE to HSF.weather data.frame
     
     HSF.weather <- data.frame(DATE, HSF.weather)
+
+# This script removes the prior data because the Weather Data Logger Appended it rather than overwrote it on the 2019-10-15 download
+# This script is needed if the raw .dat files are cleaned again from 2019-10-15
+
+HSF.weather.trunk <- HSF.weather[HSF.weather$DATE > "1990-08-06",]
+
+HSF.weather <- HSF.weather.trunk 
 
 ## Write new data file of cleaned data
 
