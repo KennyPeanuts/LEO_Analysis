@@ -1,0 +1,59 @@
+'CR200/CR200X Series
+'Created by Short Cut (3.1)
+
+'Declare Variables and Units
+Public BattV
+Public BP_mbar
+Public Rain_mm
+Public TRHData(2)
+Public SlrW
+Public SlrkJ
+Public WS_ms
+Public WindDir
+
+Alias TRHData(1)=AirTC_2
+Alias TRHData(2)=RH
+
+Units BattV=Volts
+Units BP_mbar=mbar
+Units Rain_mm=mm
+Units SlrW=W/m^2
+Units SlrkJ=kJ/m^2
+Units WS_ms=meters/second
+Units WindDir=degrees
+Units AirTC_2=Deg C
+Units RH=%
+
+'Define Data Tables
+DataTable(Table2,True,-1)
+	DataInterval(0,1440,Min)
+	Minimum(1,BattV,False,False)
+EndTable
+
+'Main Program
+BeginProg
+	'Main Scan
+	Scan(15,Min)
+		'Default Datalogger Battery Voltage measurement 'BattV'
+		Battery(BattV)
+		'CS100 Barometric Pressure Sensor measurement 'BP_mbar'
+		PortSet(2,1)
+		VoltSE(BP_mbar,1,1,0.2,603.6563)
+		BP_mbar=BP_mbar*1
+		'TE525/TE525WS Rain Gauge measurement 'Rain_mm'
+		PulseCount(Rain_mm,P_SW,2,0,0.254,0)
+		'CS215 Temperature & Relative Humidity Sensor measurements 'AirTC_2' and 'RH'
+		SDI12Recorder(TRHData(),"0M!",1,0)
+		'CS300 Pyranometer measurements 'SlrkJ' and 'SlrW'
+		VoltSE(SlrW,1,2,1,0)
+		If SlrW<0 Then SlrW=0
+		SlrkJ=SlrW*4.5
+		SlrW=SlrW*5
+		'05103 Wind Speed & Direction Sensor measurements 'WS_ms' and 'WindDir'
+		PulseCount(WS_ms,P_LL,1,1,0.098,0)
+		ExDelSE(WindDir,1,3,1,mV2500,3000,0.142,0)
+		If WindDir>=360 Or WindDir<0 Then WindDir=0
+		'Call Data Tables and Store Data
+		CallTable Table2
+	NextScan
+EndProg
