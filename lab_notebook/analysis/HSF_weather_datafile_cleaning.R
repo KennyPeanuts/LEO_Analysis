@@ -3,16 +3,16 @@
 ## Enter User Data
 ### Input filenames
 
-   input.T1.raw.file <- "./data/HSF_Weather_2019-11-11_Table1.dat"
-   input.T2.raw.file <- "./data/HSF_Weather_2019-11-11_Table2.dat"
+   input.T1.raw.file <- "./data/HSF_Weather_2020-01-31_Table1.dat"
+   input.T2.raw.file <- "./data/HSF_Weather_2020-01-31_Table2.dat"
    
-   output.T1.data.file <- "./data/HSF_weather_2019-11-11_T1_data.csv" 
-   output.T2.data.file <- "./data/HSF_weather_2019-11-11_T2_data.csv" 
+   output.T1.data.file <- "./data/HSF_weather_2020-01-31_T1_data.csv" 
+   output.T2.data.file <- "./data/HSF_weather_2020-01-31_T2_data.csv" 
    
-   output.clean.file <- "./data/HSF_weather_2019-11-11.csv" 
+   output.clean.file <- "./data/HSF_weather_2020-01-31.csv" 
     # file name format = ./data/site_date.csv
 
-   metadata.file <- "./data/metadata/HSF_weather_2019-11-11_metadata.txt" 
+   metadata.file <- "./data/metadata/HSF_weather_2020-01-31_metadata.txt" 
     # file name format = ./data/site_date.csv
 
 
